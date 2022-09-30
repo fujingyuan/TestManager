@@ -42,10 +42,18 @@ namespace TestManager
                 }
                 if (mFormData.Count == 0)
                 {
+                    if(mFormData.SelectedData.Rows.Count>0)
+                    {
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
                     SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    else
+                    {
+                        ShowWarningDialog("没有选择测试项");
+                    }
+    
                 }
                 else
                 {
@@ -227,10 +235,18 @@ namespace TestManager
                 }
                 if (mFormData.Count == 0)
                 {
+                    if (mFormData.SelectedData.Rows.Count > 0)
+                    {
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
-                    SelectDataGrideView.Columns[0].Visible = true;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    else
+                    {
+                        SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        ShowWarningDialog("没有选择测试项");
+                    }
                 }
                 else
                 {
@@ -245,10 +261,6 @@ namespace TestManager
             //SelectDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             HighlightRow();
-        }
-        private void SelectDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

@@ -31,19 +31,18 @@ namespace TestManager
         {
             this.uiFileBrowserTextBox = new Sunny.UI.UITextBox();
             this.FileBrowserButton = new Sunny.UI.UIButton();
-            this.ConfirmButton = new Sunny.UI.UIButton();
-            this.Footer.SuspendLayout();
             this.Header.SuspendLayout();
             this.SuspendLayout();
             // 
             // Footer
             // 
-            this.Footer.Controls.Add(this.ConfirmButton);
             this.Footer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
-            this.Footer.Location = new System.Drawing.Point(99, 683);
-            this.Footer.Size = new System.Drawing.Size(1105, 55);
+            this.Footer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.Footer.Location = new System.Drawing.Point(105, 681);
+            this.Footer.Size = new System.Drawing.Size(1099, 55);
             this.Footer.Style = Sunny.UI.UIStyle.Custom;
             this.Footer.StyleCustomMode = true;
+            this.Footer.Text = "";
             this.Footer.Click += new System.EventHandler(this.Footer_Click);
             // 
             // Header
@@ -52,15 +51,16 @@ namespace TestManager
             this.Header.Controls.Add(this.uiFileBrowserTextBox);
             this.Header.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
             this.Header.ForeColor = System.Drawing.Color.White;
-            this.Header.Location = new System.Drawing.Point(99, 35);
-            this.Header.Size = new System.Drawing.Size(1105, 63);
+            this.Header.Location = new System.Drawing.Point(105, 35);
+            this.Header.Size = new System.Drawing.Size(1099, 63);
             this.Header.Style = Sunny.UI.UIStyle.Custom;
             this.Header.StyleCustomMode = true;
             this.Header.Click += new System.EventHandler(this.Header_Click);
             // 
             // Aside
             // 
-            this.Aside.Size = new System.Drawing.Size(99, 703);
+            this.Aside.ItemHeight = 42;
+            this.Aside.Size = new System.Drawing.Size(105, 701);
             this.Aside.MenuItemClick += new Sunny.UI.UINavMenu.OnMenuItemClick(this.Aside_MenuItemClick);
             // 
             // uiFileBrowserTextBox
@@ -96,30 +96,15 @@ namespace TestManager
             this.FileBrowserButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.FileBrowserButton.Click += new System.EventHandler(this.FileBrowserButton_Click);
             // 
-            // ConfirmButton
-            // 
-            this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfirmButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ConfirmButton.Location = new System.Drawing.Point(875, 8);
-            this.ConfirmButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(161, 42);
-            this.ConfirmButton.Style = Sunny.UI.UIStyle.Custom;
-            this.ConfirmButton.TabIndex = 1;
-            this.ConfirmButton.Text = "确定";
-            this.ConfirmButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ConfirmButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1204, 738);
+            this.ClientSize = new System.Drawing.Size(1204, 736);
             this.Name = "mainForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "V2XTestManager";
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 1024, 720);
             this.Load += new System.EventHandler(this.mainForm_Load);
-            this.Footer.ResumeLayout(false);
             this.Header.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -129,6 +114,5 @@ namespace TestManager
 
         private Sunny.UI.UITextBox uiFileBrowserTextBox;
         private Sunny.UI.UIButton FileBrowserButton;
-        private Sunny.UI.UIButton ConfirmButton;
     }
 }

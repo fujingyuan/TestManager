@@ -1,12 +1,14 @@
 ﻿using NationalInstruments.TestStand.Utility;
 using Sunny.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -104,7 +106,7 @@ namespace TestManager
 
         private void Aside_MenuItemClick(System.Windows.Forms.TreeNode node, NavMenuItem item, int pageIndex)
         {
-            Footer.Text =  node.Text;
+            Footer.Text = node.Text;
             if (exelLoaded)
             {
                 if (mFormData.TableDataDic.TryGetValue(node.Text, out DataTable data))
@@ -154,12 +156,11 @@ namespace TestManager
 
         private void Footer_Click(object sender, System.EventArgs e)
         {
-            this.ConfirmButton.Show();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-
+            SelectPage(17);
         }
 
         private void Header_Click(object sender, EventArgs e)
@@ -169,43 +170,28 @@ namespace TestManager
 
         private void uiFileBrowserTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            mFormData.ExcelPath = uiFileBrowserTextBox.Text;
         }
 
         private void FileBrowserButton_Click(object sender, EventArgs e)
         {
-            excelFilePath = string.Empty;
-            if (string.IsNullOrEmpty(excelFilePath))
-            {
-                excelFilePath = ExcelHelper.GetOpenFilePath();
-            }
-            if (string.IsNullOrEmpty(excelFilePath))
+            OpenDialogSTAthread();
+            if (string.IsNullOrEmpty(excelFilePath)||excelFilePath == uiFileBrowserTextBox.Text)
             {
                 return;
             }
             mFormData.ExcelPath = excelFilePath;
-            fillTable(mFormData.TableDataDic, "FCW");
-            fillTable(mFormData.TableDataDic, "ICW");
-            fillTable(mFormData.TableDataDic, "LTA");
-            fillTable(mFormData.TableDataDic, "BSW");
-            fillTable(mFormData.TableDataDic, "DNPW");
-            fillTable(mFormData.TableDataDic, "EBW");
-            fillTable(mFormData.TableDataDic, "AVW");
-            fillTable(mFormData.TableDataDic, "CLW");
-            fillTable(mFormData.TableDataDic, "HLW");
-            fillTable(mFormData.TableDataDic, "SLW");
-            fillTable(mFormData.TableDataDic, "RLVW");
-            fillTable(mFormData.TableDataDic, "VRUCW");
-            fillTable(mFormData.TableDataDic, "GLOSA");
-            fillTable(mFormData.TableDataDic, "IVS");
-            fillTable(mFormData.TableDataDic, "TJW");
-            fillTable(mFormData.TableDataDic, "EVW");
 
-
+           var t1= Task.Run(()=> fillTable(mFormData.TableDataDic, new ArrayList{ "FCW","ICW"}));
+           var t2= Task.Run(() => fillTable(mFormData.TableDataDic, new ArrayList { "LTA", "BSW" }));
+           var t3= Task.Run(() => fillTable(mFormData.TableDataDic, new ArrayList { "DNPW","EBW","AVW" }));
+            var t4 = Task.Run(() => fillTable(mFormData.TableDataDic, new ArrayList { "CLW", "HLW", "SLW" }));
+            var t5 = Task.Run(() => fillTable(mFormData.TableDataDic, new ArrayList { "RLVW", "VRUCW", "GLOSA","IVS","TJW", "EVW"}));
+          Task.WaitAll(t1, t2, t3, t4, t5);
 
             string Text = mFormData.TableDataDic.First().Key;
-          
-            if(String.IsNullOrEmpty(Text))
+
+            if (String.IsNullOrEmpty(Text))
             {
                 ShowErrorDialog("没有数据");
                 return;
@@ -238,17 +224,48 @@ namespace TestManager
             new SelectForm().Show();
         }
 
-        private void fillTable(Dictionary<string, DataTable> dic, string name)
+        private void fillTable(Dictionary<string, DataTable> dic, ArrayList nameArray)
         {
-            DataTable tb = ExcelHelper.ImportFromExcel(excelFilePath, name, 0);
-            if (tb != null)
+          
+                foreach (string name in nameArray)
+                {
+                    DataTable tb = ExcelHelper.ImportFromExcel(excelFilePath, name, 0);
+                    if (tb != null)
+                    {
+                        dic.Add(name, tb);
+
+                    }
+                    else
+                    {
+                    }
+                }
+            return;
+
+        }
+        private void OpenDialogSTAthread()
+        {
+            OpenFileDialog OpenDialog = new OpenFileDialog();
+            OpenDialog.InitialDirectory = Common.DesktopDirectory;
+            OpenDialog.Filter = "Excel Office2007及以上(*.xlsx)|*.xlsx|Excel Office97-2003(*.xls)|*.xls";
+            OpenDialog.FilterIndex = 0;
+            OpenDialog.Title = "打开";
+            OpenDialog.CheckFileExists = true;
+            OpenDialog.CheckPathExists = true;
+            System.Threading.Thread invokeThread = new Thread(new ThreadStart(() =>
             {
-                dic.Add(name, tb);
-            }
-            else
-            {
-                return;
-            }
+                if (OpenDialog.ShowDialog() == DialogResult.OK)
+                {
+                    excelFilePath = OpenDialog.FileName;
+                }
+                else
+                {
+                    excelFilePath = uiFileBrowserTextBox.Text;
+
+                }
+            }));
+            invokeThread.SetApartmentState(ApartmentState.STA);
+            invokeThread.Start();
+            invokeThread.Join();
         }
 
     }
