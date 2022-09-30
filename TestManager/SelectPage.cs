@@ -17,19 +17,19 @@ namespace TestManager
         private int rowCount = 0;
         private bool excelLoaded = false;
         public SelectPage()
-        {  
+        {
             InitializeComponent();
             SelectDataGrideView.DataSource = mFormData.SelectedData;
             SelectDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.Timer.Interval = 1000;     
+            this.Timer.Interval = 1000;
         }
         private void SelectPage_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(mFormData.ExcelPath) && mFormData.SelectedData.Columns.Count>0)
+            if (!string.IsNullOrEmpty(mFormData.ExcelPath))
             {
                 excelLoaded = true;
                 SelectDataGrideView.DataSource = mFormData.SelectedData;
-                SelectDataGrideView.Columns[0].Visible = false;
+                SelectDataGrideView.Columns[0].Visible = true;
                 rowCount = mFormData.SelectedData.Rows.Count;
                 SelectDataGrideView.DataSource = mFormData.SelectedData;
                 if (mFormData.Count < rowCount - 1 && mFormData.Count > 0)
@@ -37,6 +37,7 @@ namespace TestManager
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     Timer.Start();
                 }
                 if (mFormData.Count == 0)
@@ -44,12 +45,15 @@ namespace TestManager
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
                 else
                 {
 
                 }
+                SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
+
         }
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
@@ -57,15 +61,18 @@ namespace TestManager
             {
                 if (mFormData.Count >= 1 && mFormData.Count < rowCount - 1)
                 {
+                    SelectDataGrideView.Columns[0].Visible = true;
                     SelectDataGrideView.Rows[mFormData.Count - 1].DefaultCellStyle.BackColor = Color.White;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
                 else if (mFormData.Count == 0 || mFormData.Count == rowCount - 1)
 
                 {
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
                 else
                 {
@@ -86,16 +93,19 @@ namespace TestManager
                 Timer.Stop();
                 if (mFormData.Count < rowCount - 1 && mFormData.Count >= 0)
                 {
-
+                    SelectDataGrideView.Columns[0].Visible = true;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.White;
                     ++mFormData.Count;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
                 else if (mFormData.Count == rowCount - 1)
                 {
+                    SelectDataGrideView.Columns[0].Visible = true;
                     mFormData.Loop = false;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.White;
+                    SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     ShowWarningDialog("没有测试用例");
                 }
             }
@@ -125,14 +135,17 @@ namespace TestManager
                 {
                     if (mFormData.Count < rowCount - 1 && mFormData.Count > 0)
                     {
+                        SelectDataGrideView.Columns[0].Visible = true;
                         SelectDataGrideView.Rows[mFormData.Count - 1].DefaultCellStyle.BackColor = Color.White;
                         SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                         this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                        SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                     else if (mFormData.Count == rowCount - 1)
                     {
                         mFormData.Loop = false;
                         SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.White;
+                        SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                     else
                     {
@@ -153,7 +166,7 @@ namespace TestManager
             Timer.Stop();
         }
 
-     
+
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
@@ -163,6 +176,7 @@ namespace TestManager
         {
             if (excelLoaded)
             {
+                SelectDataGrideView.Columns[0].Visible = true;
                 Timer.Stop();
                 SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.White;
                 mFormData.Loop = true;
@@ -170,6 +184,7 @@ namespace TestManager
                 mFormData.Exit = false;
                 SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
                 this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {
@@ -191,18 +206,18 @@ namespace TestManager
 
         private void SelectPage_Initialize(object sender, EventArgs e)
         {
-           
+
         }
 
         private void HighlightRow()
         {
-            if (!string.IsNullOrEmpty(mFormData.ExcelPath) && mFormData.SelectedData.Columns.Count > 0)
+            if (!string.IsNullOrEmpty(mFormData.ExcelPath))
             {
                 excelLoaded = true;
                 SelectDataGrideView.DataSource = mFormData.SelectedData;
-                SelectDataGrideView.Columns[0].Visible = false;
                 rowCount = mFormData.SelectedData.Rows.Count;
                 SelectDataGrideView.DataSource = mFormData.SelectedData;
+                SelectDataGrideView.Columns[0].Visible = true;
                 if (mFormData.Count < rowCount - 1 && mFormData.Count > 0)
                 {
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -214,20 +229,22 @@ namespace TestManager
                 {
                     SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                     SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
+                    SelectDataGrideView.Columns[0].Visible = true;
                     this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
                 }
                 else
                 {
 
                 }
+                SelectDataGrideView.Columns[0].Visible = false; SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
         public void SetTableData(DataTable data)
         {
             SelectDataGrideView.DataSource = data;
-            SelectDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            //SelectDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-           // HighlightRow();
+            HighlightRow();
         }
         private void SelectDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

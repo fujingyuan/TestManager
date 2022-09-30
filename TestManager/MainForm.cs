@@ -104,7 +104,7 @@ namespace TestManager
 
         private void Aside_MenuItemClick(System.Windows.Forms.TreeNode node, NavMenuItem item, int pageIndex)
         {
-            this.ConfirmButton.Hide();
+            Footer.Text =  node.Text;
             if (exelLoaded)
             {
                 if (mFormData.TableDataDic.TryGetValue(node.Text, out DataTable data))
@@ -183,6 +183,7 @@ namespace TestManager
             {
                 return;
             }
+            mFormData.ExcelPath = excelFilePath;
             fillTable(mFormData.TableDataDic, "FCW");
             fillTable(mFormData.TableDataDic, "ICW");
             fillTable(mFormData.TableDataDic, "LTA");
