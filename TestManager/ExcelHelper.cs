@@ -47,7 +47,7 @@ namespace TestManager
             /// 获取要打开要导入的文件名称（含完整路径）
             /// </summary>
             /// <returns></returns>
-            private static string GetOpenFilePath()
+            public static string GetOpenFilePath()
             {
                 OpenFileDialog openFileDig = new OpenFileDialog();
             openFileDig.InitialDirectory = Application.StartupPath;

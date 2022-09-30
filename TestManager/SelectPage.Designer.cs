@@ -35,105 +35,19 @@ namespace TestManager
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
-            this.ResetButton = new Sunny.UI.UIButton();
-            this.ExitButton = new Sunny.UI.UIButton();
-            this.PauseButton = new Sunny.UI.UIButton();
-            this.NextButton = new Sunny.UI.UIButton();
-            this.ConfirmButton = new Sunny.UI.UIButton();
             this.Timer = new Sunny.UI.UIMillisecondTimer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CancelTimer = new Sunny.UI.UIMillisecondTimer(this.components);
             this.SelectDataGrideView = new Sunny.UI.UIDataGridView();
             this.ControlPanel = new Sunny.UI.UIPanel();
-            this.uiGroupBox2.SuspendLayout();
+            this.ResetButton = new Sunny.UI.UIButton();
+            this.ExitButton = new Sunny.UI.UIButton();
+            this.PauseButton = new Sunny.UI.UIButton();
+            this.NextButton = new Sunny.UI.UIButton();
+            this.ConfirmButton = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.SelectDataGrideView)).BeginInit();
             this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // uiGroupBox2
-            // 
-            this.uiGroupBox2.Controls.Add(this.ResetButton);
-            this.uiGroupBox2.Controls.Add(this.ExitButton);
-            this.uiGroupBox2.Controls.Add(this.PauseButton);
-            this.uiGroupBox2.Controls.Add(this.NextButton);
-            this.uiGroupBox2.Controls.Add(this.ConfirmButton);
-            this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiGroupBox2.Location = new System.Drawing.Point(49, 647);
-            this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox2.Name = "uiGroupBox2";
-            this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox2.Size = new System.Drawing.Size(1062, 97);
-            this.uiGroupBox2.TabIndex = 10;
-            this.uiGroupBox2.Text = null;
-            this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiGroupBox2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ResetButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ResetButton.Location = new System.Drawing.Point(235, 35);
-            this.ResetButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(161, 42);
-            this.ResetButton.TabIndex = 11;
-            this.ResetButton.Text = "重置";
-            this.ResetButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ResetButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExitButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ExitButton.Location = new System.Drawing.Point(20, 35);
-            this.ExitButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(161, 42);
-            this.ExitButton.TabIndex = 10;
-            this.ExitButton.Text = "退出";
-            this.ExitButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ExitButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // PauseButton
-            // 
-            this.PauseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PauseButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.PauseButton.Location = new System.Drawing.Point(447, 34);
-            this.PauseButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(161, 42);
-            this.PauseButton.TabIndex = 9;
-            this.PauseButton.Text = "暂停";
-            this.PauseButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.PauseButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // NextButton
-            // 
-            this.NextButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NextButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NextButton.Location = new System.Drawing.Point(660, 35);
-            this.NextButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(161, 42);
-            this.NextButton.TabIndex = 8;
-            this.NextButton.Text = "跳过";
-            this.NextButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NextButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // ConfirmButton
-            // 
-            this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfirmButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ConfirmButton.Location = new System.Drawing.Point(872, 34);
-            this.ConfirmButton.MinimumSize = new System.Drawing.Size(1, 1);
-            this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(161, 42);
-            this.ConfirmButton.TabIndex = 7;
-            this.ConfirmButton.Text = "确定";
-            this.ConfirmButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ConfirmButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // openFileDialog1
             // 
@@ -192,7 +106,7 @@ namespace TestManager
             this.SelectDataGrideView.RowTemplate.Height = 27;
             this.SelectDataGrideView.ScrollBarRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.SelectDataGrideView.SelectedIndex = -1;
-            this.SelectDataGrideView.Size = new System.Drawing.Size(1162, 652);
+            this.SelectDataGrideView.Size = new System.Drawing.Size(1162, 464);
             this.SelectDataGrideView.TabIndex = 0;
             this.SelectDataGrideView.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.SelectDataGrideView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectDataGrideView_CellContentClick);
@@ -205,23 +119,91 @@ namespace TestManager
             this.ControlPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ControlPanel.MinimumSize = new System.Drawing.Size(1, 1);
             this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Size = new System.Drawing.Size(1162, 652);
+            this.ControlPanel.Size = new System.Drawing.Size(1162, 464);
             this.ControlPanel.TabIndex = 9;
             this.ControlPanel.Text = null;
             this.ControlPanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.ControlPanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ResetButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ResetButton.Location = new System.Drawing.Point(285, 502);
+            this.ResetButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(161, 42);
+            this.ResetButton.TabIndex = 16;
+            this.ResetButton.Text = "重置";
+            this.ResetButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ResetButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ExitButton.Location = new System.Drawing.Point(70, 502);
+            this.ExitButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(161, 42);
+            this.ExitButton.TabIndex = 15;
+            this.ExitButton.Text = "退出";
+            this.ExitButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ExitButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // PauseButton
+            // 
+            this.PauseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PauseButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.PauseButton.Location = new System.Drawing.Point(497, 501);
+            this.PauseButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.PauseButton.Name = "PauseButton";
+            this.PauseButton.Size = new System.Drawing.Size(161, 42);
+            this.PauseButton.TabIndex = 14;
+            this.PauseButton.Text = "暂停";
+            this.PauseButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.PauseButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // NextButton
+            // 
+            this.NextButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NextButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.NextButton.Location = new System.Drawing.Point(710, 502);
+            this.NextButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(161, 42);
+            this.NextButton.TabIndex = 13;
+            this.NextButton.Text = "跳过";
+            this.NextButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.NextButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // ConfirmButton
+            // 
+            this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfirmButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ConfirmButton.Location = new System.Drawing.Point(922, 501);
+            this.ConfirmButton.MinimumSize = new System.Drawing.Size(1, 1);
+            this.ConfirmButton.Name = "ConfirmButton";
+            this.ConfirmButton.Size = new System.Drawing.Size(161, 42);
+            this.ConfirmButton.TabIndex = 12;
+            this.ConfirmButton.Text = "确定";
+            this.ConfirmButton.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ConfirmButton.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // SelectPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1160, 769);
+            this.ClientSize = new System.Drawing.Size(1160, 572);
+            this.Controls.Add(this.ResetButton);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.PauseButton);
+            this.Controls.Add(this.NextButton);
+            this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.ControlPanel);
-            this.Controls.Add(this.uiGroupBox2);
             this.Name = "SelectPage";
             this.Text = "SelectPage";
             this.Initialize += new System.EventHandler(this.SelectPage_Initialize);
             this.Load += new System.EventHandler(this.SelectPage_Load);
-            this.uiGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SelectDataGrideView)).EndInit();
             this.ControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -229,16 +211,15 @@ namespace TestManager
         }
 
         #endregion
-        private Sunny.UI.UIGroupBox uiGroupBox2;
-        private Sunny.UI.UIButton ResetButton;
-        private Sunny.UI.UIButton ExitButton;
-        private Sunny.UI.UIButton PauseButton;
-        private Sunny.UI.UIButton NextButton;
-        private Sunny.UI.UIButton ConfirmButton;
         private Sunny.UI.UIMillisecondTimer Timer;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private Sunny.UI.UIMillisecondTimer CancelTimer;
         private Sunny.UI.UIDataGridView SelectDataGrideView;
         private Sunny.UI.UIPanel ControlPanel;
+        private Sunny.UI.UIButton ResetButton;
+        private Sunny.UI.UIButton ExitButton;
+        private Sunny.UI.UIButton PauseButton;
+        private Sunny.UI.UIButton NextButton;
+        private Sunny.UI.UIButton ConfirmButton;
     }
 }

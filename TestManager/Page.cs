@@ -73,6 +73,7 @@ namespace TestManager
         {
             PageDataGrideView.DataSource = data;
             PageDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            PageDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         bool ContainDataRowInDataTable(DataTable T, DataRow R,out DataRow R2)
         {

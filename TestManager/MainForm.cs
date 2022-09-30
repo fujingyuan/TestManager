@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using NationalInstruments.TestStand.Utility;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,27 @@ namespace TestManager
         public FormData mFormData = Singleton.Instance.Data;
         private string excelFilePath;
         private bool exelLoaded = false;
+        private Dictionary<string, int> eventIndex = new Dictionary<string, int>
+        {
+{   "FCW",1},
+{   "ICW",2},
+{   "LTA",3},
+{   "BSW",4},
+{   "DNPW",5},
+{   "EBW",6},
+{   "AVW",7},
+{   "CLW",8},
+{   "HLW",9},
+{   "SLW",10},
+{   "RLVW",11},
+{   "VRUCW",12},
+{   "GLOSA",13},
+{   "IVS",14},
+{   "TJW",15},
+{   "EVW",16},
+{   "待测项目",17},
+
+        };
         public mainForm()
         {
             InitializeComponent();
@@ -85,19 +107,17 @@ namespace TestManager
             this.ConfirmButton.Hide();
             if (exelLoaded)
             {
-                Footer.Text = Header.Text = "Event: " + node.Text;
-                Header.Text = "";
                 if (mFormData.TableDataDic.TryGetValue(node.Text, out DataTable data))
                 {
-                    if(node.Text ==  "待测项")
+                    if (node.Text == "待测项")
                     {
                         SelectPage page = (SelectPage)GetPage(pageIndex);
                         page.SetTableData(mFormData.SelectedData);
                     }
                     else
                     {
-                    Page page = (Page)GetPage(pageIndex);
-                    page.SetTableData(data);
+                        Page page = (Page)GetPage(pageIndex);
+                        page.SetTableData(data);
                     }
                 }
                 else
@@ -155,17 +175,58 @@ namespace TestManager
         private void FileBrowserButton_Click(object sender, EventArgs e)
         {
             excelFilePath = string.Empty;
-            mFormData.TableData = ExcelHelper.ImportFromExcel(ref excelFilePath, "Sheet1", 0);
-            if (mFormData.TableData != null)
+            if (string.IsNullOrEmpty(excelFilePath))
             {
-                mFormData.SelectedData = mFormData.TableData.Clone();
-                uiFileBrowserTextBox.Text = excelFilePath;
-                Aside.SelectFirst();
-                exelLoaded = true;
+                excelFilePath = ExcelHelper.GetOpenFilePath();
             }
-            else
+            if (string.IsNullOrEmpty(excelFilePath))
             {
+                return;
             }
+            fillTable(mFormData.TableDataDic, "FCW");
+            fillTable(mFormData.TableDataDic, "ICW");
+            fillTable(mFormData.TableDataDic, "LTA");
+            fillTable(mFormData.TableDataDic, "BSW");
+            fillTable(mFormData.TableDataDic, "DNPW");
+            fillTable(mFormData.TableDataDic, "EBW");
+            fillTable(mFormData.TableDataDic, "AVW");
+            fillTable(mFormData.TableDataDic, "CLW");
+            fillTable(mFormData.TableDataDic, "HLW");
+            fillTable(mFormData.TableDataDic, "SLW");
+            fillTable(mFormData.TableDataDic, "RLVW");
+            fillTable(mFormData.TableDataDic, "VRUCW");
+            fillTable(mFormData.TableDataDic, "GLOSA");
+            fillTable(mFormData.TableDataDic, "IVS");
+            fillTable(mFormData.TableDataDic, "TJW");
+            fillTable(mFormData.TableDataDic, "EVW");
+
+
+
+            string Text = mFormData.TableDataDic.First().Key;
+          
+            if(String.IsNullOrEmpty(Text))
+            {
+                ShowErrorDialog("没有数据");
+                return;
+            }
+            DataTable Data = mFormData.TableDataDic.First().Value;
+            mFormData.SelectedData = Data.Clone();
+            uiFileBrowserTextBox.Text = excelFilePath;
+            exelLoaded = true;
+            if (exelLoaded)
+            {
+                if (Text == "待测项")
+                {
+                    SelectPage page = (SelectPage)GetPage(17);
+                    page.SetTableData(Data);
+                }
+                else
+                {
+                    Page page = (Page)GetPage(eventIndex[Text]);
+                    page.SetTableData(Data);
+                }
+            }
+            Aside.SelectPage(eventIndex[Text]);
 
             //TestDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -175,6 +236,20 @@ namespace TestManager
         {
             new SelectForm().Show();
         }
+
+        private void fillTable(Dictionary<string, DataTable> dic, string name)
+        {
+            DataTable tb = ExcelHelper.ImportFromExcel(excelFilePath, name, 0);
+            if (tb != null)
+            {
+                dic.Add(name, tb);
+            }
+            else
+            {
+                return;
+            }
+        }
+
     }
 }
 

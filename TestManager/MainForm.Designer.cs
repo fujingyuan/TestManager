@@ -39,8 +39,8 @@ namespace TestManager
             // Footer
             // 
             this.Footer.Controls.Add(this.ConfirmButton);
-            this.Footer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.Footer.Location = new System.Drawing.Point(99, 804);
+            this.Footer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.Footer.Location = new System.Drawing.Point(99, 683);
             this.Footer.Size = new System.Drawing.Size(1105, 55);
             this.Footer.Style = Sunny.UI.UIStyle.Custom;
             this.Footer.StyleCustomMode = true;
@@ -60,7 +60,7 @@ namespace TestManager
             // 
             // Aside
             // 
-            this.Aside.Size = new System.Drawing.Size(99, 824);
+            this.Aside.Size = new System.Drawing.Size(99, 703);
             this.Aside.MenuItemClick += new Sunny.UI.UINavMenu.OnMenuItemClick(this.Aside_MenuItemClick);
             // 
             // uiFileBrowserTextBox
@@ -114,7 +114,7 @@ namespace TestManager
             // mainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1204, 859);
+            this.ClientSize = new System.Drawing.Size(1204, 738);
             this.Name = "mainForm";
             this.Text = "V2XTestManager";
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 1024, 720);

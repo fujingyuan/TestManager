@@ -191,12 +191,43 @@ namespace TestManager
 
         private void SelectPage_Initialize(object sender, EventArgs e)
         {
+           
+        }
 
+        private void HighlightRow()
+        {
+            if (!string.IsNullOrEmpty(mFormData.ExcelPath) && mFormData.SelectedData.Columns.Count > 0)
+            {
+                excelLoaded = true;
+                SelectDataGrideView.DataSource = mFormData.SelectedData;
+                SelectDataGrideView.Columns[0].Visible = false;
+                rowCount = mFormData.SelectedData.Rows.Count;
+                SelectDataGrideView.DataSource = mFormData.SelectedData;
+                if (mFormData.Count < rowCount - 1 && mFormData.Count > 0)
+                {
+                    SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
+                    this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                    Timer.Start();
+                }
+                if (mFormData.Count == 0)
+                {
+                    SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    SelectDataGrideView.Rows[mFormData.Count].DefaultCellStyle.BackColor = Color.Gold;
+                    this.SelectDataGrideView.CurrentCell = this.SelectDataGrideView.Rows[mFormData.Count].Cells[0];
+                }
+                else
+                {
+
+                }
+            }
         }
         public void SetTableData(DataTable data)
         {
             SelectDataGrideView.DataSource = data;
             SelectDataGrideView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            SelectDataGrideView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           // HighlightRow();
         }
         private void SelectDataGrideView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
